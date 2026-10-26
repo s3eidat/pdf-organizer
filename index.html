@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>PDF Organizer — Reorder, Rotate &amp; Delete PDF Pages, Free &amp; Private | S3eidat Tools</title>
+<meta name="description" content="Rearrange PDF pages by dragging thumbnails, rotate pages, delete pages, insert blank pages, undo, and save a new PDF. Runs in your browser, nothing uploaded.">
+<meta property="og:title" content="PDF Organizer — free, private PDF page editor">
+<meta property="og:description" content="Reorder, rotate and delete PDF pages with thumbnails. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<script src="lib/pdf-lib.min.js"></script>
+</head>
+<body data-tool="pdf-organizer">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>PDF Organizer</h1>
+    <p>Drag pages into order, rotate the sideways ones, drop the ones you don't need, and save a new PDF. Your file never leaves this device.</p>
+  </section>
+
+  <section class="card">
+    <label class="drop" id="drop">
+      <input type="file" accept=".pdf,application/pdf" hidden>
+      <svg class="i"><use href="#i-upload"/></svg>
+      <b>Drop a PDF here</b>
+      <span>or click to choose one</span>
+    </label>
+
+    <div id="work" hidden>
+      <div class="row between po-file">
+        <div class="row"><svg class="i"><use href="#i-file"/></svg><b id="fname"></b><span class="faint" id="fmeta"></span></div>
+        <button class="btn ghost small" id="change"><svg class="i"><use href="#i-refresh"/></svg>Another file</button>
+      </div>
+
+      <div class="po-bar mt" role="toolbar" aria-label="Page tools">
+        <button class="btn small" id="rotL" title="Rotate left (selected, or all)">⟲ <span id="rotLlbl">Rotate all</span></button>
+        <button class="btn small" id="rotR" title="Rotate right (selected, or all)">⟳ <span id="rotRlbl">Rotate all</span></button>
+        <button class="btn small" id="del" title="Delete selected (Delete key)"><svg class="i"><use href="#i-trash"/></svg>Delete</button>
+        <button class="btn small" id="mvL" title="Move selected left (Ctrl+←)">◀ Move</button>
+        <button class="btn small" id="mvR" title="Move selected right (Ctrl+→)">Move ▶</button>
+        <button class="btn small" id="blank" title="Insert a blank page after the selection, or at the end"><svg class="i"><use href="#i-plus"/></svg>Blank page</button>
+        <span class="po-sep"></span>
+        <button class="btn small" id="undo" title="Undo (Ctrl+Z)">↶ Undo</button>
+        <button class="btn small" id="redo" title="Redo (Ctrl+Y)">↷ Redo</button>
+        <button class="btn ghost small" id="reset" title="Back to the original order">Reset</button>
+      </div>
+
+      <div class="row mt">
+        <span class="chip" id="summary"></span>
+        <span class="faint po-help">Click to select · Shift/Ctrl+click for more · drag to reorder</span>
+        <span class="grow"></span>
+        <button class="btn primary big" id="save"><svg class="i"><use href="#i-download"/></svg>Save PDF</button>
+      </div>
+
+      <div class="po-grid mt" id="grid"></div>
+    </div>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
